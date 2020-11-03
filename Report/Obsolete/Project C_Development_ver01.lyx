@@ -1,0 +1,7585 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Project - Fast, Predictive Gimbal Tracking System
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Amir S.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+311399612
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Idan A.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+312123532
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Subsection
+Background
+\end_layout
+
+\begin_layout Standard
+This project interfaces with project #5425 at VISL Laboratory (Continue
+ of project #5155 at VISL).
+ The complete system of this project will be described later.
+ The mentioned project dealt with the computer vision challenges.
+ A major part of that project is the need to control a motor to follow a
+ target, and until today this control was implemented without any attention
+ to Control Theory, thus it operates poorly.
+ In this project we will replace the motors with better ones and focus on
+ the control side according to popular approaches.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/visl_project_poster.png
+	height 5cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Part of the project #5155 academic poster 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Motivation
+\end_layout
+
+\begin_layout Standard
+Implementing a good target following system may be useful for various applicatio
+ns such as: 
+\begin_inset Formula $\left(1\right)$
+\end_inset
+
+ recording fast moving object like birds, bats or insects.
+ 
+\begin_inset Formula $\left(2\right)$
+\end_inset
+
+ Shooting down military invasive targets 
+\begin_inset Formula $\left(3\right)$
+\end_inset
+
+ Maintaining beam based communication with a moving system.
+ Doing it well enough using relatively cheap, off-the-shelf parts is challenging.
+\end_layout
+
+\begin_layout Subsection
+Operational Objective
+\end_layout
+
+\begin_layout Standard
+Let there be a copter drone flying freely near our system.
+ We would like to (theoretically) point a laser beam to this drone as accurately
+ as possible.
+\end_layout
+
+\begin_layout Subsection
+Educational Objectives
+\end_layout
+
+\begin_layout Itemize
+Understand the main consideration of designing a discrete controlled following
+ system
+\end_layout
+
+\begin_layout Itemize
+Learn the right development workflow of such system
+\end_layout
+
+\begin_layout Itemize
+Feel the main bottlenecks of such a system including noises, delays, amplificati
+ons etc
+\end_layout
+
+\begin_layout Itemize
+Get a sense of the limitations of such a 
+\begin_inset Quotes eld
+\end_inset
+
+cheap
+\begin_inset Quotes erd
+\end_inset
+
+ setup
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Notations
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="40line%">
+<column alignment="center" valignment="top" width="40line%">
+<column alignment="center" valignment="top" width="40line%">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Symbol
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Meaning
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Units
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{target}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The value of the detected target horizontal pixel in the camera's frame
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[degree\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{center}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The value of the center horizontal pixel in the camera's frame
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[degree\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $W$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The covariance matrix of 
+\begin_inset Formula $x_{k}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $V$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The covariance matrix of 
+\begin_inset Formula $y_{k}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Mathematical notations key
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="40line%">
+<column alignment="center" valignment="top" width="40line%">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Word
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Meaning
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Gimbal
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Squared Error
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MSE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mean Squared Error
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Literal notations key
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The System
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/the_system_ver01.png
+	height 5cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The physical system
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Description
+\end_layout
+
+\begin_layout Subsubsection
+Pan & Tilt Platform, Motors
+\end_layout
+
+\begin_layout Standard
+The base of the system is a 
+\begin_inset Formula $\theta,\phi$
+\end_inset
+
+ 
+\series bold
+2 axes Pan & Tilt mechanism
+\series default
+ (gimbal).
+ The movement of each axis is enabled by an opened-loop stepper motor:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/PT_mechanism_picture.png
+	height 3cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A sketch of the gimbal platform
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The unit used in our project is the Flir PTU-46-17.5.
+ (
+\begin_inset CommandInset href
+LatexCommand href
+name "link"
+target "https://www.flir.com/products/ptu-e46/"
+literal "false"
+
+\end_inset
+
+).
+ Wide documentation can be found in project's folders.
+ This unit is consisted of Open-Loop stepper motors.
+ It is very rigid, fast and precise and connects easily to cameras.
+ Please note that the original controller does not exist anymore 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Stepper-Driver"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, thus we had replaced it with Arduino.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/pan_tilt_performance.png
+	height 5cm
+	BoundingBox 0bp 0bp 814bp 622bp
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Flir PTU-46-17.5 performance table
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Camera
+\end_layout
+
+\begin_layout Standard
+On top of this platform we place a 
+\series bold
+Telephoto Camera
+\series default
+.
+ In this project we assume that if a laser pointer was mounted on the camera,
+ then its beam axis would consolidate with the cameras LOS.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/camera_with_laser.png
+	height 3cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A mounted telephoto camera with demonstration of laser beam
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The camera will capture a frame and feed it to a Neural Network in order
+ to get the 
+\begin_inset Formula $\left(x,y\right)$
+\end_inset
+
+ location of the center of the drone within the frame.
+ This information is the only input to our system.
+ In order to achieve the operational objective, the computer will pass this
+ information to our 
+\series bold
+Software Python Controller
+\series default
+.
+ The controller generates an optimal 
+\series bold
+speed command
+\series default
+ and sends it via serial bus to 
+\series bold
+Arduino Micro-controller
+\series default
+.
+ The Arduino is programmed to convert this command to adequate digital pins
+ switching which is fed to the 
+\series bold
+Stepper Driver Board
+\series default
+.
+\end_layout
+
+\begin_layout Subsubsection
+Stepper Driver
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Stepper-Driver"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The documentation for the original Flir PTU-46-17.5 controller is included.
+ Unfortunately, when we began working with the system, we found out that
+ in the past someone got rid of the original controller, and had built a
+ new one himself inside the original 
+\begin_inset Formula $Directed\ Perception$
+\end_inset
+
+ housing.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/opened_controler_box.png
+	height 5cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Internal view of the (modified) control box
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The diver used in this project is A4988 based circuit, controlled by Arduino
+ Nano:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/A4988_image.jpg
+	height 3cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A4988 driver board
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/arduino_nano_image.jpg
+	height 3cm
+	BoundingBox 0bp 0bp 600bp 450bp
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Arduino Nano board
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+For some time
+\end_layout
+
+\begin_layout Standard
+we thought about dropping the Arduino and generating digital pulses directly
+ from the Jetson's I/O pins.
+ After a short research we learned that doing so is not recommended because
+ precise control of the Jetson's I/O pins is not technically easy.
+ Moreover asking such a big and complex CPU to generate high quality frequency
+ can not beat the simplicity of a dedicated independent controller such
+ as the Arduino.
+ Further useful information can be found here: (
+\begin_inset CommandInset href
+LatexCommand href
+name "link"
+target "https://elinux.org/Jetson/PWM"
+literal "false"
+
+\end_inset
+
+), (
+\begin_inset CommandInset href
+LatexCommand href
+name "link"
+target "https://forums.developer.nvidia.com/t/hardware-pwm/49025"
+literal "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsubsection
+Computer
+\end_layout
+
+\begin_layout Standard
+The computer used in this project is Nvidia Jetson AGX Xavier.
+ (
+\begin_inset CommandInset href
+LatexCommand href
+name "link"
+target "https://developer.nvidia.com/embedded/jetson-agx-xavier-developer-kit"
+literal "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../../Project_B_VISL/Report/Report images/jetson_agx_xavier_spec.png
+	height 3cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Nvidia Jetson AGX Xavier specification details
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Our unit is mounted on Connect Tech Rogue Carrier for NVIDIA® Jetson AGX
+ Xavier (
+\begin_inset CommandInset href
+LatexCommand href
+name "link"
+target "https://connecttech.com/product/rogue-carrier-nvidia-jetson-agx-xavier/"
+literal "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../../Project_B_VISL/Report/Report images/jetson_agx_xavier_carrier_board.png
+	height 2cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Connect Tech Rogue Carrier specification details
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Power Source
+\end_layout
+
+\begin_layout Standard
+We use Meanwell LRS-100-24 power supply for the stepper driver board (
+\begin_inset CommandInset href
+LatexCommand href
+name "link"
+target "https://www.meanwell-web.com/en-gb/ac-dc-single-output-enclosed-power-supply-lrs--100--24"
+literal "false"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/meanwell_lrs100_24.png
+	height 3cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Meanwell LRS-100 power supply
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Simplified Block Diagram
+\end_layout
+
+\begin_layout Subsubsection
+Basic Diagram
+\end_layout
+
+\begin_layout Standard
+If simplified as much as possible, our control loop can be presented as
+ the following diagram:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/Gimbal Project Flow.png
+	width 100line%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Basic block diagram of the system
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+E2E Delay
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:E2E-Delay"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+\begin_inset Quotes eld
+\end_inset
+
+Glass-to-glass video latency, also called end-to-end (E2E) video delay,
+ is indicating the period of time from when the photons of a visible event
+ pass through the lens glass of the camera till the moment when the final
+ image is delivered to the glass of the monitor.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As we will discuss deeply later in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Forward-Prediction"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, it turns out that in our system this delay is significant.
+ Adding it yields the following diagram:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/Project Flow with delay.png
+	width 100line%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Basic block diagram of the system with E2E delay
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Simulation Block Diagram
+\end_layout
+
+\begin_layout Standard
+The simulation scheme is the following Simulink Block Diagram:
+\end_layout
+
+\begin_layout Standard
+Top level:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/Simulink/Top Level Simulink.png
+	width 100line%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+In this level we can see the 
+\series bold
+gimbal
+\series default
+, 
+\series bold
+kalman-filter
+\series default
+ and the 
+\series bold
+E2E delay 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Kalman Subsystem:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/Simulink/Kalman Filter.png
+	width 100line%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Kalman Subsystem
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Gimbal Sub-system:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/Simulink/Gimbal.png
+	width 100line%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The Gimbal behavior modeled as block sub-system
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Preliminary Research
+\end_layout
+
+\begin_layout Subsection
+Academic Articles
+\end_layout
+
+\begin_layout Subsubsection
+Direct Versus Indirect Line of Sight (LOS) Stabilization (
+\begin_inset CommandInset href
+LatexCommand href
+name "link"
+target "https://ieeexplore.ieee.org/abstract/document/1173005"
+literal "false"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+Main topics:
+\end_layout
+
+\begin_layout Itemize
+Two methods are analyzed: Mounting the sensors on the (static) base of the
+ gimbal versus mounting it directrly on the moving parts of it.
+\end_layout
+
+\begin_layout Itemize
+The track loop must have sufficient bandwidth to track the LOS kinematics.
+ The stabilization loop bandwidth must be high enough to reject the platform
+ disturbance spectrum.
+\end_layout
+
+\begin_layout Itemize
+It is assumed that the gimbal rotation axes are aligned with the principal
+ axes of inertia so that the inertia matrix is diagonal.
+\end_layout
+
+\begin_layout Itemize
+Inertia (hence also the control) of the second axis may change with the
+ elevation of the first axis.
+\end_layout
+
+\begin_layout Subsubsection
+Feedback Control of Dynamic Systems, 8th Edition (
+\begin_inset CommandInset href
+LatexCommand href
+name "link"
+target "https://www.pearson.com/us/higher-education/program/Franklin-Feedback-Control-of-Dynamic-Systems-8th-Edition/PGM1653583.html"
+literal "false"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Optimizing for the A4988 Driver
+\end_layout
+
+\begin_layout Subsection
+Reference for the Best Possible Performance
+\end_layout
+
+\begin_layout Standard
+As mentioned in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Arduino-Code"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ the system is not controlled by it's original controller.
+ For this reason we can not rely on any performance specification on the
+ data sheet.
+\end_layout
+
+\begin_layout Standard
+We drive the stepper motors using an A4988 Driver controlled by Arduino
+ Nano backed by external power source.
+ However the official specifications of the product do set 
+\series bold
+an upper bound
+\series default
+ for the performance we can get from the system if we do things right.
+\end_layout
+
+\begin_layout Subsection
+Enabling Micro-stepping
+\end_layout
+
+\begin_layout Standard
+The A4988 driver offers micro-stepping functionality:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/a4988_microstepping_table.png
+	width 100line%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Micro-stepping programming table.
+ The configuration is done by connecting the digital pins according to this
+ table
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/micro-stepping.png
+	width 100line%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Demonstration of Sine signal following using different levels of micro-stepping
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Demonstration-of-Sine"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Micro-stepping obviously improves the angular precision, but alongside it
+ may help to improve angular velocity.
+\end_layout
+
+\begin_layout Subsection
+Supplying Higher Voltage
+\end_layout
+
+\begin_layout Subsubsection
+Problems with high frequency
+\end_layout
+
+\begin_layout Standard
+One of the things that holds stepper motors back from rotating faster, is
+ the supplied voltage level limit.
+ Although the speed is determined by the switching frequency, when the frequency
+ is too high, there is not enough time for the voltage to rise to it's maximum
+ each cycle, thus produce the maximum current required to push the pole.
+ The low current produces low torque and the motor starts to 
+\begin_inset Quotes eld
+\end_inset
+
+slip
+\begin_inset Quotes erd
+\end_inset
+
+ and miss steps.
+\end_layout
+
+\begin_layout Subsubsection
+The relation to micro-stepping
+\end_layout
+
+\begin_layout Standard
+Using micro-stepping generates more torque.
+ The general explanation for this is that it is easier to push the motor's
+ rotor in small steps rather than push it in large steps.
+\end_layout
+
+\begin_layout Subsubsection
+Applying this solution
+\end_layout
+
+\begin_layout Standard
+Our first power adapter output voltage was 12V.
+ Then we replaced it with 19V adapter and observed slightly better performance
+ (see table below) later we have installed a permanent 24V power supply
+ in order to extend safety margins and raise switching frequency even higher
+ if needed.
+\end_layout
+
+\begin_layout Subsection
+Highest Achieved Input Frequency (Max.
+ Speed)
+\end_layout
+
+\begin_layout Standard
+As mentioned above, we have 3 parameters to tune: 
+\shape italic
+switching frequency, MS mode, input voltage
+\shape default
+.
+ Since for 
+\shape italic
+input voltage
+\shape default
+ higher is always better, we set it as high as we can, up to to driver's
+ limitation.
+ We are left with 2 parameters to tune in order to achieve the maximum speed
+ for the camera.
+ Next we list the optimal working points we managed to get during the developmen
+t process.
+\end_layout
+
+\begin_layout Subsubsection
+Working point #1
+\end_layout
+
+\begin_layout Standard
+The first good working point we have found used the following setup:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MS config.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Input Voltage 
+\begin_inset Formula $\left[V\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Max.
+ Freq.
+ 
+\begin_inset Formula $\left[Hz\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Calculated 
+\begin_inset Formula $V_{\theta}\left[deg\cdot s^{-1}\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1-Pulse size 
+\begin_inset Formula $\left[deg/pulse\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+LLL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Motors working point #1 specification
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Working point #2
+\end_layout
+
+\begin_layout Standard
+The first good working point we have found used the following setup:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MS config.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Input Voltage 
+\begin_inset Formula $\left[V\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Max.
+ Freq.
+ 
+\begin_inset Formula $\left[Hz\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Calculated 
+\begin_inset Formula $V_{\theta}\left[deg\cdot s^{-1}\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1-Pulse size 
+\begin_inset Formula $\left[deg/pulse\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+LHL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3571
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+89.28
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{1.8°}{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Motors working point #2 specification
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Arduino Code 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Arduino-Code"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The pre-existing code on the Arduino was not good enough for our needs.
+ It moved the axes sequentially instead of simultaneously and had no speed
+ control.
+ Therefor we had to rewrite it from scratch.
+\end_layout
+
+\begin_layout Standard
+Our code has 2 main flows:
+\end_layout
+
+\begin_layout Enumerate
+Reading commands
+\end_layout
+
+\begin_layout Enumerate
+Moving the gimbal
+\end_layout
+
+\begin_layout Standard
+The Arduino uses 
+\begin_inset Quotes eld
+\end_inset
+
+pseudo threads
+\begin_inset Quotes erd
+\end_inset
+
+ to switch between the two flows.
+ The flows run on a single thread, but use a software designed thread to
+ switch between them.
+ The switch can occur anytime a flow calls the delay function, or yields
+ manually.
+\end_layout
+
+\begin_layout Subsubsection
+Send Arduino commands
+\end_layout
+
+\begin_layout Standard
+Communication with the Arduino is done via a serial port.
+ For efficient communication, all commands are single byte commands, therefor
+ valid send values are 0-255 (0x0 - 0xff)
+\end_layout
+
+\begin_layout Standard
+The values 0-100 and 156-255 (which correspond to -100 - -1) are reserved
+ for set speed commands.
+ This sets the speed of the relevant axis to 0% - 100% of the maximum speed,
+ and the direction is defined by the sign, so 1-100 is the positive direction,
+ and 156-255 is the negative direction.
+ The axis controlled by the command alternates with each call, so the first
+ call sets the speed of the horizontal axis and the second sets the speed
+ of the vertical axis.
+\end_layout
+
+\begin_layout Standard
+The maximum speed is defined by a speed modifier, which can be set separately
+ for each axis by a dedicated command, 
+\end_layout
+
+\begin_layout Standard
+Other commands include a settings reset and changing the output frequency
+ pulse length.
+ In addition, there is a command to test the motion of the gimbal, for debugging
+ purposes, and there are unused command numbers, that can be filled as necessary
+ in the future.
+\end_layout
+
+\begin_layout Subsubsection
+Moving the gimbal
+\end_layout
+
+\begin_layout Standard
+The Arduino has some frequency generating signals, however there is no way
+ to set their frequency in run-time.
+ So instead we set the signals manually in the code, so that they get the
+ required frequency.
+\end_layout
+
+\begin_layout Standard
+The sequence to a single step 
+\begin_inset Quotes eld
+\end_inset
+
+cycle
+\begin_inset Quotes erd
+\end_inset
+
+ is as follows:
+\end_layout
+
+\begin_layout Itemize
+Raise the signal
+\end_layout
+
+\begin_layout Itemize
+Wait pulse_length time (as set by the command, default is 100 microseconds
+\end_layout
+
+\begin_layout Itemize
+lower the signal 
+\end_layout
+
+\begin_layout Itemize
+Wait for a time defined by [speed_modifier/speed_percent - pulse_length].
+\end_layout
+
+\begin_layout Standard
+In this way the signal period is speed_modifier/speed_percent and the frequency
+ is the inverse.
+\end_layout
+
+\begin_layout Standard
+Note: When we wait we use the microsecondDelay(time) function.
+ This function does not allow for a thread switch, so at the end of each
+ cycle we yield, to allow the thread to read a command from serial.
+ We assume the time required to read and perform the command is short enough
+ to not skew the frequency.
+\end_layout
+
+\begin_layout Subsubsection
+Implement 
+\begin_inset Quotes eld
+\end_inset
+
+Parallelism
+\begin_inset Quotes erd
+\end_inset
+
+ between 2-Axes
+\end_layout
+
+\begin_layout Standard
+As mentioned before, waiting between pulses is done with the microsecondDelay
+ command which does not allow for thread switching.
+ Therefore we can't use threads to control the speed of both axis at once.
+ Instead, we alter the above algorithm to control both axis at once, using
+ events.
+\end_layout
+
+\begin_layout Standard
+Each axis has a raise signal event, and lower signal event.
+ After every event, the time for the next event for each axis is calculated,
+ and the thread waits for the minimal time between the two.
+ This way, both signals can be switched in independent frequencies.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+System Constants
+\end_layout
+
+\begin_layout Subsection
+Angle-Pixel Ratio
+\end_layout
+
+\begin_layout Standard
+The system was calibrated to work in optimal range of 
+\begin_inset Formula $5\left[m\right]$
+\end_inset
+
+.
+ The camera's sensor has resolution of 
+\begin_inset Formula $720\times1280\left[pixels\right]$
+\end_inset
+
+.
+ We have fixed the zoom such that in this distance the drone covers about
+ third of the frame's width.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/drone_at_nominal_distance.jpg
+	height 5cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/system_calibration_sketch.png
+	height 5cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From this sketch we derive the field of view (FOV) of our camera, and the
+ conversion factor between pixels and degrees.
+\begin_inset Formula 
+\[
+\boxed{\text{Camera FOV}=\tan^{-1}\left(\frac{0.51}{2\cdot5}\right)\cdot2=5.82°}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\boxed{\text{\ensuremath{\alpha_{0}}}=\frac{5.82}{1280}=0.0045\left[deg/pixel\right]}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\boxed{\text{\ensuremath{\beta_{0}}}=\frac{1280}{0.51}=2510\left[pixel/m\right]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Maximum Target Velocity
+\end_layout
+
+\begin_layout Standard
+By accelerating the drone to its maximum velocity, and converting it to
+ angular velocity, we found that: <FIX>
+\begin_inset Formula 
+\[
+\boxed{\text{Maximum Target Angular Velocity}=v_{\theta}=\left[deg\cdot s^{-1}\right]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Maximum Target Acceleration
+\end_layout
+
+\begin_layout Standard
+After performing a simple experiment, we can bound the drone's acceleration
+ by:
+\begin_inset Formula 
+\[
+\boxed{\text{X axis Acceleration}=a_{x}<2\left[m\cdot s^{-2}\right]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So calculating the angular acceleration, with the assumption 
+\begin_inset Formula $a_{x}=2\left[m\cdot s^{-2}\right],\qquad d=5\left[m\right]$
+\end_inset
+
+ yields:
+\begin_inset Formula 
+\[
+\boxed{\text{\ensuremath{\theta} Angular Acceleration}=a_{\theta}<22.91\left[deg\cdot s^{-2}\right]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Detection Noise Parameters
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Detection-Noise-Parameters"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sampling a static object and saving all the measurements can help us calculate
+ the parameters of the detection noise:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/measuring_detection_noise.png
+	height 5cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Measuring the detection noise value
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This test produced the following results:
+\begin_inset Formula 
+\[
+\boxed{\text{Detection Mean}=w_{d,0}=0\left[pixels\right]}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\boxed{\text{Detection Covariance}=\sigma_{d,0}=12\left[pixels\right]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and after converting it to degrees:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\boxed{\text{Detection Mean}=w_{d,0}\cdot\text{\ensuremath{\alpha_{0}}}=0\left[deg\right]}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\boxed{\text{Detection Covariance}=\sigma_{d,0}\cdot\text{\ensuremath{\alpha_{0}}}=0.054\left[deg\right]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+E2E Delay Value
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:E2E-Delay-Value"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As mentioned in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:E2E-Delay"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ this delay has a major influence on our system.
+ Unfortunately our camera is no professional enough thus not include this
+ parameter in it's specification.
+ In order to estimate it's value, we have built the next set-up:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/measuring_camera_delay.png
+	width 100line%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A Sketch of the setup used for measuring E2E delay of our camera
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/camera_intrinsic_delay.png
+	width 100line%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A screen shot of the monitor with the live timer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The setup works according to this logic: we make the camera capture a live
+ running precise timer which is being displayed on the monitor.
+ We use a program 
+\begin_inset Formula $\left(guvcview\right)$
+\end_inset
+
+ to display the camera's stream on the same monitor.
+ Assuming the program we use to show the camera stream adds a negligible
+ delay, or at least the best possible one, we now have the same timer twice
+ on the monitor.
+ One is the original timer (the pretty one on the figure) and the second
+ is the timer after it went though the camera, thus it is delayed (the yellowish
+ one on the figure).
+\end_layout
+
+\begin_layout Standard
+We can see that this experiment reveals a delay of:
+\begin_inset Formula 
+\begin{align*}
+\text{E2E Delay} & =0.172\left[s\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This value equals to about 6 samples (frames) @ 30FPS which is our current
+ rate, or to 24 samples when 120FPS rate will be achieved in the future.
+ 
+\end_layout
+
+\begin_layout Standard
+In addition to this delay, another delay is added due to the time take to
+ run the DNN on the image.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The Control
+\end_layout
+
+\begin_layout Subsection
+Modeling Our System
+\end_layout
+
+\begin_layout Standard
+Define our state space:
+\begin_inset Formula 
+\[
+x_{k}\triangleq\left(\begin{array}{c}
+\theta_{t}\\
+\dot{\theta}_{t}\\
+\ddot{\theta}_{t}
+\end{array}\right)_{k}
+\]
+
+\end_inset
+
+Defining the matrices:
+\begin_inset Formula 
+\[
+A=\left(\begin{array}{ccc}
+1 & \Delta_{k} & \frac{\Delta_{k}^{2}}{2}\\
+0 & 1 & \Delta_{k}\\
+0 & 0 & 1
+\end{array}\right),\qquad B=\left(\begin{array}{c}
+0\\
+0\\
+0
+\end{array}\right),\qquad C=\left(\begin{array}{ccc}
+1 & 0 & 0\end{array}\right)
+\]
+
+\end_inset
+
+The system:
+\begin_inset Formula 
+\[
+\begin{cases}
+x_{k+1}=Ax_{k}+\left(\begin{array}{c}
+0\\
+0\\
+1
+\end{array}\right)w\\
+y_{k}=Cx_{k}+v
+\end{cases}
+\]
+
+\end_inset
+
+We model the targets change in acceleration as random noise 
+\begin_inset Formula $w$
+\end_inset
+
+ with covariance that is calculated according to the target's maximum accelerati
+on.
+ In addition, 
+\begin_inset Formula $v$
+\end_inset
+
+ is the measurement noise.
+ We assume both noises are random, independent with known measured covariance
+ and an average of 
+\begin_inset Formula $0$
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Standard
+With this defined system we can use standard Kalman filter to estimate our
+ state-space.
+\end_layout
+
+\begin_layout Subsection
+Kalman Filter
+\end_layout
+
+\begin_layout Subsubsection
+Mathematically
+\end_layout
+
+\begin_layout Standard
+Define the noise covariance matrices:
+\begin_inset Formula 
+\[
+\begin{cases}
+W= & \left(\begin{array}{ccc}
+0 & 0 & 0\\
+0 & 0 & 0\\
+0 & 0 & 1
+\end{array}\right)cov\left(w\right)\\
+V= & cov\left(v\right)
+\end{cases}
+\]
+
+\end_inset
+
+Prediction:
+\begin_inset Formula 
+\[
+\begin{cases}
+P_{k+1}^{-}=A_{k}P_{k}^{+}A_{k}^{T}+W\\
+\hat{x}_{k+1}^{-}=A_{k}\hat{x}^{+}
+\end{cases}
+\]
+
+\end_inset
+
+Estimation:
+\begin_inset Formula 
+\[
+\begin{cases}
+K_{k}\triangleq P_{k}^{-}C_{k}^{T}\left(C_{k}P_{k}^{-}C_{k}^{T}+V\right)^{-1}\\
+\hat{x}_{k}^{+}=x_{k}^{-}+K_{k}\left(y_{k}-C_{k}x_{k}^{-}\right)\\
+P_{k}^{+}=\left(I-K_{k}C_{k}\right)P_{k}^{-}
+\end{cases}
+\]
+
+\end_inset
+
+Initial state:
+\begin_inset Formula 
+\[
+x_{0}=\left(\begin{array}{c}
+y_{0}\\
+0\\
+0
+\end{array}\right),\qquad P_{0}=\left(\begin{array}{ccc}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{array}\right)
+\]
+
+\end_inset
+
+That is, our initial state is our first measured position of the target
+ and our covariance matrix 
+\begin_inset Formula $P$
+\end_inset
+
+ is arbitrarily chosen as it will eventually converge to the same value.
+\end_layout
+
+\begin_layout Standard
+Our code also has an option to run with a stationary filter in which case
+ 
+\begin_inset Formula $K$
+\end_inset
+
+ is a constant vector calculated in the beginning according to a given 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ (so that 
+\begin_inset Formula $A$
+\end_inset
+
+ is static).
+ In this case 
+\begin_inset Formula $P$
+\end_inset
+
+ is a constant value given by the solution of the 
+\begin_inset Formula $discrete$
+\end_inset
+
+ 
+\begin_inset Formula $Riccati\,equation$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Python Code
+\end_layout
+
+\begin_layout Standard
+The Kalman filter can be found on 
+\family typewriter
+Code/OurFunctions/kalman_filter.py
+\family default
+.
+ It is implemented straight forward using matrices multiplications, making
+ prediction and then estimation:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report code sections/kalman_filter_py_KalmanFilter.png
+	height 7cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Our discrete Kalman filter python implementation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Controller
+\end_layout
+
+\begin_layout Subsubsection
+Mathematically
+\end_layout
+
+\begin_layout Standard
+Since the Kalman filter above gives us an estimation of the state-space
+ parameters, we can use them with a Type-II controller.
+ Because we also get a velocity estimation, we can feed that into the controller
+ and essentially get a PID controller.
+\end_layout
+
+\begin_layout Subsubsection
+Python Code
+\end_layout
+
+\begin_layout Standard
+The controller class can be found in 
+\family typewriter
+Code/OurFunctions/controller.py
+\family default
+ This implementation is a generic form for 
+\begin_inset Formula $0...\infty$
+\end_inset
+
+ integrators.
+ First we pass the input through the integrators and multiply by the matching
+ gain constant.
+ Then we multiply the result by the speed gain:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report code sections/controller_py_Controller.png
+	height 5cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Our discrete controller python implementation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report code sections/controller_py_Integrator.png
+	width 100line%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Our discrete integrator python implementation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Forward Prediction
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Forward-Prediction"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As mentioned in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:E2E-Delay"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, and will be proven in <FIX> our system suffers badly from this delay.
+ Our system always 
+\begin_inset Quotes eld
+\end_inset
+
+sees the past
+\begin_inset Quotes erd
+\end_inset
+
+.
+ This causes two problems:
+\end_layout
+
+\begin_layout Enumerate
+Target position is based on target offset and gimbal position.
+ As only the offset is affected by the delay, the target position we calculate
+ is false, and not even delayed as we expect.
+\end_layout
+
+\begin_layout Enumerate
+Even if our target position is known, it is delayed and so the gimbal follows
+ the target in delay
+\end_layout
+
+\begin_layout Standard
+Proper kinematic following is very hard to achieve in these conditions.
+ The popular academic solution for large delays is a 
+\series bold
+Smith Predictor.
+\end_layout
+
+\begin_layout Subsubsection
+Mathematically
+\end_layout
+
+\begin_layout Standard
+In it's standard form Smith Predictor deals with internal delay around the
+ controller or the plant: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/smith_predictor_diagram.png
+	height 5cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A standard form of Smith Predictor addition to a system with 
+\begin_inset Formula $z^{-k}$
+\end_inset
+
+delay
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+However in our case the delay appears on the 
+\series bold
+Input
+\series default
+ so two necessary modification were made to fit our structure:
+\end_layout
+
+\begin_layout Enumerate
+We add an artificial delay on the gimbal position, so we get a correct target
+ position (but still delayed)
+\end_layout
+
+\begin_layout Enumerate
+We predict the position of the target based on its motion
+\end_layout
+
+\begin_layout Standard
+In Simulink the artificial delay is simulated by a simple delay block:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/Simulink/artificial_delay.png
+	height 3cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Artificial delay module on simulink
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Below we can see the predictor placed in our Simulink model right after
+ the Kalman filter:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/Simulink/Kalman Forward Predictor.png
+	height 3cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Forward Prediction module on simulink
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Python Code
+\end_layout
+
+\begin_layout Standard
+To create artificial delay in the gimbal, we store its past positions in
+ a buffer.
+ The tracker that requests the gimbal position can choose to get the current
+ position, or the past position, which is the last element in the buffer.
+ The relevant code can be found in 
+\family typewriter
+Code/OurFunctions/gimbal.py
+\family default
+ :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report code sections/gimbal_py_get_position.png
+	height 3cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Artificial delay module on python
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Forward prediction is implemented as a multiplication with a matrix raised
+ by a power.
+ The value of the power is the number of forward prediction steps.
+ The relevant code can be found in 
+\family typewriter
+Code/OurFunctions/kalman_filter.py :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report code sections/kalman_filter_py_get_forward_prediction.png
+	height 1.5cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Forward Prediction module on python
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+The tracker calculates 
+\family typewriter
+num_steps
+\family default
+ according to average 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ and time delay input set by us.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Performance Test
+\end_layout
+
+\begin_layout Subsection
+Error Measurement
+\end_layout
+
+\begin_layout Standard
+In order to compare between different control methods and to fine tune hyper-par
+ameters, A consistent performance test is required.
+ As it is customary we will use MSE as the cost function:
+\begin_inset Formula 
+\begin{align*}
+\text{Momentary Error} & =\text{SE}\\
+ & =\left(\text{Distance Diff}\right)^{2}\\
+ & =\left(\sqrt{\left(x_{target}-x_{center}\right)^{2}+\left(y_{target}-y_{center}\right)^{2}}\right)^{2}\\
+ & =\left(x_{target}-x_{center}\right)^{2}+\left(y_{target}-y_{center}\right)^{2}\\
+ & =\left(x_{target}\right)^{2}+\left(y_{target}\right)^{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence the total error of the test will be:
+\begin_inset Formula 
+\begin{align*}
+\text{Total Error} & =\text{MSE}\\
+ & =\frac{1}{K}\sum_{k=1}^{K}\left(\text{Momentary Error}\right)\\
+ & =\frac{1}{K}\sum_{k=1}^{K}\left(x_{target_{k}}^{2}+y_{target_{k}}^{2}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where here we will refer to:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left(x_{center},y_{center}\right)$
+\end_inset
+
+ are the 
+\series bold
+pixel
+\series default
+ coordinates of the center of the received frame, which are equal to 
+\begin_inset Formula $\left(0,0\right)$
+\end_inset
+
+ in our calibration
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $K$
+\end_inset
+
+ is the number of frames captured in the test
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left(x_{target},y_{target}\right)$
+\end_inset
+
+ are the 
+\series bold
+filtered
+\series default
+ 
+\series bold
+pixel 
+\series default
+coordinates of the target we are following
+\end_layout
+
+\begin_layout Subsection
+Computer Simulation (using Simulink) 
+\end_layout
+
+\begin_layout Standard
+In order to learn about the behavior of the system, we have modeled it as
+ accurate as possible, taking into account Noise, Delay, and Frame Rate.
+ Using this simulation we can run experiments quickly and optimize our system
+ structure and constants.
+\end_layout
+
+\begin_layout Standard
+Because the legend appears small in upcoming graphs, it is given here:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/Graphs/legend.png
+	height 3cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulink graphs legend
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Performance on Running Input - Ideal scenario
+\end_layout
+
+\begin_layout Standard
+First we run without any noise or delay, so we have a baseline to compare
+ to.
+ Our controller is a PI controller with the following gains:
+\begin_inset Formula 
+\[
+K_{P}=4,\qquad K_{I}=4
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We will be using this controller for all our simulations.
+\end_layout
+
+\begin_layout Standard
+The axes for all the figures in this section are:
+\begin_inset Formula 
+\[
+x-axis:\text{Time\left[sec\right]}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+y-axis:\text{Angle\left[degrees\right]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/Graphs/Position - No noise No delay.png
+	width 100line%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Position
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/Graphs/Offset from target - No noise No delay.png
+	width 100line%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Offset
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+The influence of noise
+\end_layout
+
+\begin_layout Standard
+Our target localization on frame is slightly noisy, as measured in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Detection-Noise-Parameters"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ In this graph we simulate this noise:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/Graphs/Target position - with noise No delay.png
+	width 100line%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Position
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/Graphs/Target offset - w noise No delay.png
+	width 100line%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Offset
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can see that the offset graph is almost identical to the ideal offset
+ graph, which means the Kalman filter does a good job filtering this noise.
+\end_layout
+
+\begin_layout Subsubsection
+The influence of delay 
+\end_layout
+
+\begin_layout Standard
+During the work we have noticed the bad, significant influence of the 
+\series bold
+E2E delay
+\series default
+.
+ In this section we will quickly examine how could we benefit from lower
+ 
+\series bold
+E2E delay.
+
+\series default
+ First we simulate the delay without any corrections:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/Graphs/Target position - No noise - delay 0.3 unsynced.png
+	width 100line%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Position
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/Graphs/Target offset - No noise - Delay 0.3 unsynced.png
+	width 100line%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Offset
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As we can see, target position is inaccurate which causes fluctuations in
+ the gimbal position.
+ 
+\end_layout
+
+\begin_layout Standard
+Now we simulate the same delay with our correction (described in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Forward-Prediction"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/Graphs/Target position - No noise - Delay 0.3 synced.png
+	width 100line%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Position
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/Graphs/Target offset - No noise - Delay 0.3 synced.png
+	width 100line%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Offset
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can see that the target position estimation fluctuates slightly on accelerati
+on change but quickly settles on the correct value.
+ As a result the gimbal position no longer has sinusoidal behavior.
+\end_layout
+
+\begin_layout Subsubsection
+The influence of noise+delay+correction
+\end_layout
+
+\begin_layout Standard
+This is the closest simulation to our actual system, containing all discussed
+ effects:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/Graphs/Target position - Noise - Delay 0.2 synced.png
+	width 100line%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Position
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/Graphs/Target offset - Noise - Delay 0.2 synced.png
+	width 100line%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Offset
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can see a pretty good following, especially during the constant velocity
+ movement.
+ A maximal overshoot of less than 
+\begin_inset Formula $5$
+\end_inset
+
+ degrees is observed for this velocity (slope), 
+\begin_inset Formula $11.5\left[deg/sec\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+The influence of sample-rate (FPS)
+\end_layout
+
+\begin_layout Standard
+Our current system is simulated at 33FPS.
+ To simulate a stronger GPU (which would output more frame per second) we
+ would like to see the effects of higher FPS on the simulation.
+ We ran the same test as before with a frame rate of 100FPS:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/Graphs/Target position - noise - delay 0.2 synced - high fps.png
+	width 100line%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Position
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/Graphs/Target offset - noise - delay 0.2 synced - high fps.png
+	width 100line%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Offset
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can see that in this scenario the behavior is almost the same as before,
+ when the FPS was lower.
+\end_layout
+
+\begin_layout Subsubsection
+The influence of wrong delay correction & FPS
+\end_layout
+
+\begin_layout Standard
+In the real world it is hard to know the exact E2E delay.
+ This can make it hard to make a perfect prediction.
+ We want to simulate the effect of wrong delay:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/Graphs/Target position - underestimate delay - low fps.png
+	width 100line%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Position @ 33FPS and delay diff of 0.1
+\begin_inset Formula $\left[s\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/Graphs/Target position - underestimate delay - high fps.png
+	width 100line%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Position @ 100FPS and delay diff of 0.1
+\begin_inset Formula $\left[s\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As we can see both cases show strong sinusoidal behavior.
+ The higher the FPS the higher the frequency.
+ We can see that the Kalman filter prediction which is not meant to deal
+ with sinusoidal effects fluctuates wildly.
+ This shows the importance of a proper sync between the real E2E delay and
+ the artificially added one 
+\series bold
+when using prediction
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+Note that the actual gimbal position roughly follows the target motion because
+ the integrator in the controller damps the wild motion of the prediction.
+\end_layout
+
+\begin_layout Subsection
+Real-Life Test Procedure
+\end_layout
+
+\begin_layout Standard
+Our system tracks objects 
+\series bold
+physically
+\series default
+ in the real world, thus can not be simulated purely on a computer.
+ There is a need for a moving subject which we can point the motorized camera
+ at.
+ We will examine 2 ways of doing that.
+\end_layout
+
+\begin_layout Standard
+In order to be consistent while repeating a test for a curtain control method
+ or comparing between 2 different methods or hyper-parameters choose the
+ object must move in the same way (rout, acceleration) each time, which
+ leads us to the first method.
+\end_layout
+
+\begin_layout Subsubsection
+Screen Simulation
+\end_layout
+
+\begin_layout Standard
+Using a video camera, we have filmed a session of the moving drone over
+ a clean background.
+ Having this session, we can place the camera in front of a digital monitor
+ and present the video on this monitor:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/screen_simulator_setup.png
+	height 5cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Monitor based test setup
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The camera is then tracks the image of the object which travels across the
+ monitor.
+ This setup allows us to play the same video each test, and avoid illumination
+ differences (caused by daylight) thus keeping the test consistent.
+ In addition we do not have to worry about fresh batteries for the drone
+ etc.
+\end_layout
+
+\begin_layout Paragraph
+A Problem
+\end_layout
+
+\begin_layout Standard
+was discovered during the first attempt.
+ While the standard refresh rate of TV monitors is 
+\begin_inset Formula $60\left[Hz\right]$
+\end_inset
+
+, our camera records @ 
+\begin_inset Formula $120\left[Hz\right]$
+\end_inset
+
+ thus we can deduce the readings are not perfect - as we might capture a
+ black screens, or capture the same frame twice before it is updated.
+\end_layout
+
+\begin_layout Standard
+Moreover, looking at a small area of 1080p or 4K monitor, the camera captures
+ the pixels, thus the recognition quality (detection or localization error,
+ for example) does not represent the reality.
+\end_layout
+
+\begin_layout Subsubsection
+Pre-Programmed Route
+\end_layout
+
+\begin_layout Standard
+The drone can be controlled by a program of a curtain route.
+ In theory we can run this program each time with the drone located in the
+ same location:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/drone_auto_route.png
+	height 3cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Pre-programmed drone route example
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In fact such a program was implemented in Project 5095 by Shaked Osherov
+ at VISL Laboratory which is an upgrade for this (
+\begin_inset CommandInset href
+LatexCommand href
+name "link"
+target "https://github.com/dji-sdk/Tello-Python"
+literal "false"
+
+\end_inset
+
+) repository.
+ Depending on the repeatability of the drone's behavior, such a setup might
+ work well but has few drawbacks:
+\end_layout
+
+\begin_layout Itemize
+There is a need to replace the batteries frequently.
+ Charging them takes long time but they give only few minutes of flying
+\end_layout
+
+\begin_layout Itemize
+Coding a complex pre-programmed route that looks natural is not trivial
+\end_layout
+
+\begin_layout Itemize
+Even simple motions profiles like constant velocity are not guaranteed to
+ be accurate and repetitive due to the internal sensors of the drone.
+\end_layout
+
+\begin_layout Itemize
+Real life experiments requires a large, tidy space
+\end_layout
+
+\begin_layout Itemize
+Real life experiments may differ due to the light amount or wind in the
+ room
+\end_layout
+
+\begin_layout Subsubsection
+Real life graphs
+\end_layout
+
+\begin_layout Standard
+Experiment with ramp motion:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/Graphs/pos_4_6_0.1.png
+	width 100line%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $P=4,\qquad I=6,\qquad D=0.1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/Graphs/offset_4_6_0.1.png
+	width 100line%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $P=4,\qquad I=6,\qquad D=0.1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can see an expected behavior, fairly similar to the simulation.
+\end_layout
+
+\begin_layout Standard
+Experiments with back and forth motion:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/Graphs/pos_baf_4_4_0.1.png
+	width 100line%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $P=4,\qquad I=4,\qquad D=0.1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/Graphs/offset_baf_4_4_0.1.png
+	width 100line%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $P=4,\qquad I=4,\qquad D=0.1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can see that in the peaks, where the target changes direction, the offset
+ grows.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/Graphs/pos_baf_6_6_0.1.png
+	width 100line%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $P=6,\qquad I=6,\qquad D=0.1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Report images/Graphs/offset_baf_6_6_0.1.png
+	width 100line%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $P=6,\qquad I=6,\qquad D=0.1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can see that higher control values increase the effect of delay.
+ Sinusoidal motion is induced which in term cause sinusoidal in our target
+ location estimation and prediction.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Summary & Conclusion
+\end_layout
+
+\begin_layout Subsection*
+Delay is the bottleneck
+\end_layout
+
+\begin_layout Standard
+The first and foremost conclusion is that the camera delay is the biggest
+ obstacle in getting perfect tracking.
+ Some of its effects can be handled, however there is no way to improve
+ the system without getting better gear to lower the delay.
+\end_layout
+
+\begin_layout Standard
+The delay limits the control tools at our disposal.
+ For example, integrators are sensitive to delays (or errors that arise
+ from wrong prediction), which limits the type of controller we use down
+ to type 2.
+\end_layout
+
+\begin_layout Standard
+In addition, the delay makes it harder to follow certain drone behaviors.
+ For example, if the drone makes a rapid change in direction, it might leave
+ the camera before the change in direction is even noticed in the system.
+\end_layout
+
+\begin_layout Subsection*
+Lack of feedback (Open Loop)
+\end_layout
+
+\begin_layout Standard
+Stepper motors are generally open loop systems.
+ This applies to our gimbal, which provides no indication of its current
+ position.
+ Instead we have to manually calculate its position at every moment based
+ on the speed we input into it.
+ While this gives good results, its not as reliable as an actual feedback
+ system.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Absolute vs Relative position
+\end_layout
+
+\begin_layout Standard
+Our system is unusual as the device calculating the target position is also
+ the one tracking him.
+ This means we only ever know the relative position with certainty, and
+ the global position is something we have to calculate ourselves from that.
+ This makes the calculated position less certain than a system that separates
+ the identification and tracking systems.
+\end_layout
+
+\begin_layout Standard
+Although our system does have a static camera, it is a wide frame camera,
+ and so will not give as accurate position as the moving, zoomed in camera.
+ This camera was not in the scope of our project, and it might be possible
+ to use it together with the moving camera to get the target global position
+ with higher certainty.
+\end_layout
+
+\begin_layout Subsection*
+Simulating code based system
+\end_layout
+
+\begin_layout Standard
+All of our control modules are in 
+\series bold
+C++ 
+\begin_inset Formula $\left(Arduino\right)$
+\end_inset
+
+
+\series default
+ or 
+\series bold
+Python
+\series default
+ code.
+ However our simulation tool 
+\begin_inset Formula $\left(Simulink\right)$
+\end_inset
+
+ is not built to simulate these code environments.
+ This is relevant in two modules: Kalman Filter and Gimbal Controller.
+ For the Kalman Filter we use an existing module which should behave the
+ same but might differ due to implementation.
+ For the gimbal controller we could have used a simple integrator, however
+ we chose to simulate it as close as possible to the Arduino code.
+ We can see a noticeable difference between the two implementations, and
+ our implementation is very close to the actual gimbal behavior.
+\end_layout
+
+\begin_layout Standard
+While we achieve results that are close to the actual system, it is difficult
+ to predict the exact system behavior, however it is a good enough estimate
+ to find problems in the control flow and get good starting values for our
+ control parameters.
+ Additional real-life experiments are needed to fine-tune them.
+\end_layout
+
+\begin_layout Subsection*
+Performing real life experiment
+\end_layout
+
+\begin_layout Standard
+We offered two ways of performing real life experiments, each with it's
+ own drawbacks.
+ Generally it can be difficult to generate the same conditions that we use
+ in simulation, and especially repetitively.
+\end_layout
+
+\begin_layout Subsection*
+Limitations of Kalman filter
+\end_layout
+
+\begin_layout Standard
+Kalman Filters are not suited for complex motions, such as sinusoidal movements.
+ Our filter works great as long as the target's acceleration does not change
+ too rapidly: the noises are smoothed out and the target's position is predicted
+ well.
+ However when the target experiences large 
+\series bold
+jerks,
+\series default
+ prediction becomes inaccurate and the tracking quality drops and we can
+ even lose the target.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Meetings Summary
+\end_layout
+
+\begin_layout Subsection
+Consult Meeting (Face to face)
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Date: 12.03.2020
+\end_layout
+
+\begin_layout Paragraph
+Participants:
+\end_layout
+
+\begin_layout Standard
+Amir, Idan, Ilan
+\end_layout
+
+\begin_layout Paragraph
+Disscussion Topics:
+\end_layout
+
+\begin_layout Itemize
+Presenting the idea of the project
+\end_layout
+
+\begin_layout Itemize
+Planing initial steps
+\end_layout
+
+\begin_layout Paragraph
+Conclusions:
+\end_layout
+
+\begin_layout Itemize
+The idea has a good potential
+\end_layout
+
+\begin_layout Itemize
+A single academic article was found
+\end_layout
+
+\begin_layout Paragraph
+Actions:
+\end_layout
+
+\begin_layout Itemize
+Understand which gimbal can serve us for the project and how will we work
+ with it
+\end_layout
+
+\begin_layout Subsection
+Consult Meeting (Phone call)
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Date: 19.03.2020
+\end_layout
+
+\begin_layout Paragraph
+Participants:
+\end_layout
+
+\begin_layout Standard
+Amir, Idan, Ilan
+\end_layout
+
+\begin_layout Paragraph
+Discussion Topics:
+\end_layout
+
+\begin_layout Itemize
+First steps: A suggestion to read an article
+\end_layout
+
+\begin_layout Paragraph
+Conclusions:
+\end_layout
+
+\begin_layout Itemize
+Start with reading about relevant topics for the project
+\end_layout
+
+\begin_layout Itemize
+A suggestion to read the article 
+\begin_inset Quotes eld
+\end_inset
+
+Direct Versus Indirect Line of Sight (LOS) Stabilization (29 January 2003)
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Actions:
+\end_layout
+
+\begin_layout Itemize
+Read the suggested article
+\end_layout
+
+\begin_layout Itemize
+Summarize the mentioned article and send it for review
+\end_layout
+
+\begin_layout Subsection
+Work Meeting
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Date: 20.03.2020
+\end_layout
+
+\begin_layout Paragraph
+Participants:
+\end_layout
+
+\begin_layout Standard
+Amir, Idan
+\end_layout
+
+\begin_layout Paragraph
+Work progress:
+\end_layout
+
+\begin_layout Itemize
+Read the article 
+\begin_inset Quotes eld
+\end_inset
+
+Direct Versus Indirect Line of Sight (LOS) Stabilization (29 January 2003)
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Discuss about topics raised in this article
+\end_layout
+
+\begin_layout Paragraph
+How we continue next time:
+\end_layout
+
+\begin_layout Itemize
+Set a meeting with Ilan and share our feelings: this article does not seem
+ very relevant for our needs in the project
+\end_layout
+
+\begin_layout Paragraph
+What we need to ask the instructor:
+\end_layout
+
+\begin_layout Itemize
+How shall we continue from here?
+\end_layout
+
+\begin_layout Itemize
+Will working with stepper motors be fine for this project?
+\end_layout
+
+\begin_layout Subsection
+Consult Meeting (Phone Call)
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Date: 25.03.2020
+\end_layout
+
+\begin_layout Paragraph
+Participants:
+\end_layout
+
+\begin_layout Standard
+Amir, Idan
+\end_layout
+
+\begin_layout Paragraph
+Discussion Topics:
+\end_layout
+
+\begin_layout Itemize
+Insights & discussion about article #1
+\end_layout
+
+\begin_layout Itemize
+Summarize the article together
+\end_layout
+
+\begin_layout Paragraph
+Conclusions:
+\end_layout
+
+\begin_layout Itemize
+The article is not very useful for us
+\end_layout
+
+\begin_layout Itemize
+Stepper motors shall be fine although their control is a bit tricky
+\end_layout
+
+\begin_layout Paragraph
+Actions:
+\end_layout
+
+\begin_layout Itemize
+Search for more related articles, focusing on 
+\series bold
+Predictive Control
+\end_layout
+
+\begin_layout Itemize
+Send few suggestions of articles to Ilan
+\end_layout
+
+\begin_layout Subsection
+Consult Meeting (Phone Call)
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Date: 26.03.2020
+\end_layout
+
+\begin_layout Paragraph
+Participants:
+\end_layout
+
+\begin_layout Standard
+Amir, Idan, Ilan
+\end_layout
+
+\begin_layout Paragraph
+Discussion Topics:
+\end_layout
+
+\begin_layout Itemize
+Share Insights & discussion about article #1 with Ilan
+\end_layout
+
+\begin_layout Paragraph
+Conclusions:
+\end_layout
+
+\begin_layout Itemize
+The artice is not very useful for us
+\end_layout
+
+\begin_layout Itemize
+We should start with reading few relevant chapters on the book: 
+\begin_inset Quotes eld
+\end_inset
+
+Feedback Control of Dynamic Systems 6th Edition
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Actions:
+\end_layout
+
+\begin_layout Itemize
+Read above mentioned material, regarding closed loop angular control of
+ continues & disrete systems
+\end_layout
+
+\begin_layout Itemize
+Start building and simulation basic system in Matlab
+\end_layout
+
+\begin_layout Subsection
+Work Meeting
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Date: 01.04.2020
+\end_layout
+
+\begin_layout Paragraph
+Participants:
+\end_layout
+
+\begin_layout Standard
+Amir, Idan
+\end_layout
+
+\begin_layout Paragraph
+Work progress:
+\end_layout
+
+\begin_layout Itemize
+Start playing with Simulink in order to model our system
+\end_layout
+
+\begin_layout Itemize
+Sketch various systems on paper while trying to understand the shape of
+ ours
+\end_layout
+
+\begin_layout Paragraph
+How we continue next time:
+\end_layout
+
+\begin_layout Itemize
+We must get our hands on a working gimbal, so we can feel how it behaves
+ and reacts to commands, thus know how should we model it
+\end_layout
+
+\begin_layout Paragraph
+What we need to ask the instructor:
+\end_layout
+
+\begin_layout Itemize
+Meet with Kobi Kohai to discuss the options for gimbal
+\end_layout
+
+\begin_layout Subsection
+Consult Meeting
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Date: 08.04.2020
+\end_layout
+
+\begin_layout Paragraph
+Participants:
+\end_layout
+
+\begin_layout Standard
+Amir, Kobi
+\end_layout
+
+\begin_layout Paragraph
+Discussion Topics:
+\end_layout
+
+\begin_layout Itemize
+Which gimbal can CRML supply us?
+\end_layout
+
+\begin_layout Paragraph
+Conclusions:
+\end_layout
+
+\begin_layout Itemize
+We found a really nice gimbal: FLIR PTU E46 (
+\begin_inset CommandInset href
+LatexCommand href
+name "link"
+target "https://www.flir.com/products/ptu-e46/"
+literal "false"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+It's size is good, and it looks as it has a rich & comfortable control interface
+ (API)
+\end_layout
+
+\begin_layout Paragraph
+Actions:
+\end_layout
+
+\begin_layout Itemize
+Attempt to move this gimbal
+\end_layout
+
+\begin_layout Subsection
+Work Meeting
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Date: 01.07.2020
+\end_layout
+
+\begin_layout Paragraph
+Participants:
+\end_layout
+
+\begin_layout Standard
+Amir, Idan
+\end_layout
+
+\begin_layout Paragraph
+Work progress:
+\end_layout
+
+\begin_layout Paragraph
+How we continue next time:
+\end_layout
+
+\begin_layout Itemize
+Set nominal distance & zoom
+\end_layout
+
+\begin_layout Itemize
+Find the conversion between pixels and angle
+\end_layout
+
+\begin_layout Itemize
+Solder the micro-stepping pins
+\end_layout
+
+\begin_layout Paragraph
+What we need to ask the instructor:
+\end_layout
+
+\begin_layout Itemize
+Did we model the system well?
+\end_layout
+
+\begin_layout Itemize
+Is it right to use the LQR controller in our case?
+\end_layout
+
+\begin_layout Subsection
+Work Meeting
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Date: 20.05.2020
+\end_layout
+
+\begin_layout Paragraph
+Participants:
+\end_layout
+
+\begin_layout Standard
+Amir, Idan
+\end_layout
+
+\begin_layout Paragraph
+Work progress:
+\end_layout
+
+\begin_layout Itemize
+Trying very hard to control the PTU
+\end_layout
+
+\begin_layout Itemize
+The PTU does not respond to any of our commands
+\end_layout
+
+\begin_layout Itemize
+The PTU moves oddly regardless what we send it
+\end_layout
+
+\begin_layout Paragraph
+How we continue next time:
+\end_layout
+
+\begin_layout Itemize
+Ask for assistance with controlling the PTU
+\end_layout
+
+\begin_layout Paragraph
+What we need to ask the instructor:
+\end_layout
+
+\begin_layout Itemize
+Can someone help us with this issue?
+\end_layout
+
+\begin_layout Itemize
+Can we have the last documented project used this PTU?
+\end_layout
+
+\begin_layout Subsection
+Work Meeting
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Date: 28.05.2020
+\end_layout
+
+\begin_layout Paragraph
+Participants:
+\end_layout
+
+\begin_layout Standard
+Amir, Idan
+\end_layout
+
+\begin_layout Paragraph
+Work progress:
+\end_layout
+
+\begin_layout Itemize
+Open (disassemble) the controller's box
+\end_layout
+
+\begin_layout Itemize
+Discover there is no original controller inside it, but an Arduino Nano
+ + A4988 Driver instead
+\end_layout
+
+\begin_layout Paragraph
+How we continue next time:
+\end_layout
+
+\begin_layout Itemize
+We need to understand the consequences of this new discovery
+\end_layout
+
+\begin_layout Itemize
+We want to know what limitations we face due to this situation
+\end_layout
+
+\begin_layout Paragraph
+What we need to ask the instructor:
+\end_layout
+
+\begin_layout Itemize
+Nothing
+\end_layout
+
+\begin_layout Subsection
+Work Meeting
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Date: 04.06.2020
+\end_layout
+
+\begin_layout Paragraph
+Participants:
+\end_layout
+
+\begin_layout Standard
+Amir, Idan
+\end_layout
+
+\begin_layout Paragraph
+Work progress:
+\end_layout
+
+\begin_layout Itemize
+Understand how does the Arduino controls the motors
+\end_layout
+
+\begin_layout Itemize
+manage to achieve preliminary basic movements with serial commands
+\end_layout
+
+\begin_layout Paragraph
+How we continue next time:
+\end_layout
+
+\begin_layout Itemize
+We need to further understand how to control the driver better
+\end_layout
+
+\begin_layout Itemize
+We need understand the behavior of serial commands
+\end_layout
+
+\begin_layout Itemize
+We need to find a way to control 2 axes simultaneously
+\end_layout
+
+\begin_layout Itemize
+Find the speed and acceleration limit of the motor
+\end_layout
+
+\begin_layout Paragraph
+What we need to ask the instructor:
+\end_layout
+
+\begin_layout Itemize
+How do we model the step motor?
+\end_layout
+
+\begin_layout Itemize
+How do we handle discrete behaviors of the system?
+\end_layout
+
+\begin_layout Subsection
+Work Meeting
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Date: 22.07.2020
+\end_layout
+
+\begin_layout Paragraph
+Participants:
+\end_layout
+
+\begin_layout Standard
+Amir, Idan
+\end_layout
+
+\begin_layout Paragraph
+Work progress:
+\end_layout
+
+\begin_layout Itemize
+Improve Arduino C code
+\end_layout
+
+\begin_layout Itemize
+Understand the behavior of serial commands
+\end_layout
+
+\begin_layout Itemize
+Found a way to control 2 axes simultaneously using a scheduler
+\end_layout
+
+\begin_layout Itemize
+Found the frequency (speed) limit of current configuration (for given voltage
+ etc.)
+\end_layout
+
+\begin_layout Paragraph
+How we continue next time:
+\end_layout
+
+\begin_layout Itemize
+Start implementation of basic control loops
+\end_layout
+
+\begin_layout Paragraph
+What we need to ask the instructor:
+\end_layout
+
+\begin_layout Itemize
+What is the input for our system?
+\end_layout
+
+\begin_layout Subsection
+Work Meeting
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Date: 01.08.2020
+\end_layout
+
+\begin_layout Paragraph
+Participants:
+\end_layout
+
+\begin_layout Standard
+Amir, Idan
+\end_layout
+
+\begin_layout Paragraph
+Work progress:
+\end_layout
+
+\begin_layout Itemize
+Read the theory of Kalman filter and LQR contoller
+\end_layout
+
+\begin_layout Itemize
+Implement Kalman filter in python code
+\end_layout
+
+\begin_layout Itemize
+Implemnt LQR contoller in python code
+\end_layout
+
+\begin_layout Itemize
+test both and observe good tracking results
+\end_layout
+
+\begin_layout Paragraph
+How we continue next time:
+\end_layout
+
+\begin_layout Itemize
+According to the instructor's guidance
+\end_layout
+
+\begin_layout Paragraph
+What we need to ask the instructor:
+\end_layout
+
+\begin_layout Itemize
+Did we model the system well?
+\end_layout
+
+\begin_layout Itemize
+Is it right to use the LQR controller in our case?
+\end_layout
+
+\begin_layout Subsection
+Consult Meeting
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Date: 06.08.2020
+\end_layout
+
+\begin_layout Paragraph
+Participants:
+\end_layout
+
+\begin_layout Standard
+Amir, Idan, Ilan
+\end_layout
+
+\begin_layout Paragraph
+Discussion Topics:
+\end_layout
+
+\begin_layout Itemize
+Did we model the system well?
+\end_layout
+
+\begin_layout Itemize
+Is it right to use the LQR controller in our case?
+\end_layout
+
+\begin_layout Paragraph
+Conclusions:
+\end_layout
+
+\begin_layout Itemize
+No need to use complex filters yet
+\end_layout
+
+\begin_layout Itemize
+We have understood the basic shape of the system's block diagram
+\end_layout
+
+\begin_layout Itemize
+Discuss delay handling shortly - we just use predictions of many steps ahead
+\end_layout
+
+\begin_layout Paragraph
+Actions:
+\end_layout
+
+\begin_layout Itemize
+Rewrite the project's objective according to what we have defined with the
+ laser fixed to the camera.
+\end_layout
+
+\begin_layout Itemize
+Draw a block diagram of the system
+\end_layout
+
+\begin_layout Itemize
+Simulate the system on the computer as accurately as possible.
+\end_layout
+
+\begin_layout Itemize
+Find the most significant noises using the simulation.
+\end_layout
+
+\begin_layout Subsection
+Work Meeting
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Date: 09.08.2020
+\end_layout
+
+\begin_layout Paragraph
+Participants:
+\end_layout
+
+\begin_layout Standard
+Amir, Idan
+\end_layout
+
+\begin_layout Paragraph
+Work progress:
+\end_layout
+
+\begin_layout Itemize
+Identification of systems noises (detection uncertainty) with an experiment
+\end_layout
+
+\begin_layout Itemize
+Identification of system unit conversion factors (angle to pixel etc.) 
+\end_layout
+
+\begin_layout Itemize
+Calculate angular speed, acceleration
+\end_layout
+
+\begin_layout Paragraph
+How we continue next time:
+\end_layout
+
+\begin_layout Itemize
+Update python code to fit with the Simulink diagram
+\end_layout
+
+\begin_layout Paragraph
+What we need to ask the instructor:
+\end_layout
+
+\begin_layout Itemize
+Nothing
+\end_layout
+
+\begin_layout Subsection
+Work Meeting
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Date: 16.08.2020
+\end_layout
+
+\begin_layout Paragraph
+Participants:
+\end_layout
+
+\begin_layout Standard
+Amir, Idan
+\end_layout
+
+\begin_layout Paragraph
+Work progress: 
+\end_layout
+
+\begin_layout Itemize
+Update python code to fit with the Simulink diagram
+\end_layout
+
+\begin_layout Itemize
+Bug fixes in the Arduino
+\end_layout
+
+\begin_layout Itemize
+Build classes for gimbal control, kalman filter and graphing
+\end_layout
+
+\begin_layout Itemize
+Add feature for the Arduino to send live commands
+\end_layout
+
+\begin_layout Paragraph
+How we continue next time:
+\end_layout
+
+\begin_layout Itemize
+Add classes for speed control, overall class to control tracking
+\end_layout
+
+\begin_layout Itemize
+Try working with the Tello python control library
+\end_layout
+
+\begin_layout Itemize
+Perform an experiment, plot graphs, to compare simulation and real system
+ performance
+\end_layout
+
+\begin_layout Paragraph
+What we need to ask the instructor:
+\end_layout
+
+\begin_layout Itemize
+Is our block diagram ok?
+\end_layout
+
+\begin_layout Subsection
+Work Meeting
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Date: 17.08.2020
+\end_layout
+
+\begin_layout Paragraph
+Participants:
+\end_layout
+
+\begin_layout Standard
+Amir, Idan
+\end_layout
+
+\begin_layout Paragraph
+Work progress: 
+\end_layout
+
+\begin_layout Itemize
+Add classes for speed control, overall class to control tracking
+\end_layout
+
+\begin_layout Paragraph
+How we continue next time:
+\end_layout
+
+\begin_layout Itemize
+Try working with the Tello python control library
+\end_layout
+
+\begin_layout Itemize
+Perform an experiment, plot graphs, to compare simulation and real system
+ performance
+\end_layout
+
+\begin_layout Paragraph
+What we need to ask the instructor:
+\end_layout
+
+\begin_layout Itemize
+s
+\end_layout
+
+\begin_layout Subsection
+Work Meeting
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Date: 22.08.2020
+\end_layout
+
+\begin_layout Paragraph
+Participants:
+\end_layout
+
+\begin_layout Standard
+Amir, Idan
+\end_layout
+
+\begin_layout Paragraph
+Work progress: 
+\end_layout
+
+\begin_layout Itemize
+Control Tello drone via python
+\end_layout
+
+\begin_layout Itemize
+Camera's cables was damaged, tried to re-wire it, failed to do so
+\end_layout
+
+\begin_layout Itemize
+Test plotted error graphs
+\end_layout
+
+\begin_layout Paragraph
+How we continue next time:
+\end_layout
+
+\begin_layout Itemize
+n/a
+\end_layout
+
+\begin_layout Paragraph
+What we need to ask the instructor:
+\end_layout
+
+\begin_layout Itemize
+n/a
+\end_layout
+
+\begin_layout Subsection
+Work Meeting
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Date: 27.08.2020
+\end_layout
+
+\begin_layout Paragraph
+Participants:
+\end_layout
+
+\begin_layout Standard
+Amir, Idan
+\end_layout
+
+\begin_layout Paragraph
+Work progress: 
+\end_layout
+
+\begin_layout Itemize
+Experiment
+\end_layout
+
+\begin_layout Paragraph
+How we continue next time:
+\end_layout
+
+\begin_layout Itemize
+n/a
+\end_layout
+
+\begin_layout Paragraph
+What we need to ask the instructor:
+\end_layout
+
+\begin_layout Itemize
+n/a
+\end_layout
+
+\begin_layout Subsection
+Consult Meeting
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Date: 01.09.2020
+\end_layout
+
+\begin_layout Paragraph
+Participants:
+\end_layout
+
+\begin_layout Standard
+Amir, Idan, Ilan
+\end_layout
+
+\begin_layout Paragraph
+Disscussion Topics:
+\end_layout
+
+\begin_layout Itemize
+Overall progress
+\end_layout
+
+\begin_layout Paragraph
+Conclusions:
+\end_layout
+
+\begin_layout Itemize
+n/a
+\end_layout
+
+\begin_layout Paragraph
+Actions:
+\end_layout
+
+\begin_layout Itemize
+Look for the reasons for the Drone's imperfect behavior
+\end_layout
+
+\begin_layout Itemize
+Derive the mathematical form of the drone's controller 
+\end_layout
+
+\begin_layout Itemize
+Find the noise in the system
+\end_layout
+
+\begin_layout Itemize
+Fix the block diagram
+\end_layout
+
+\begin_layout Itemize
+give accurate names to the following error graphs
+\end_layout
+
+\begin_layout Itemize
+Add graphs colors to the Blocks Diagram
+\end_layout
+
+\begin_layout Itemize
+Upgrade the architecture to merge between Kalman to Controller
+\end_layout
+
+\begin_layout Subsection
+Work Meeting
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Date: 01.09.2020
+\end_layout
+
+\begin_layout Paragraph
+Participants:
+\end_layout
+
+\begin_layout Standard
+Amir, Idan
+\end_layout
+
+\begin_layout Paragraph
+Work progress: 
+\end_layout
+
+\begin_layout Itemize
+Perform a new constant velocity experiment using on our hand movement
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Observe overshoot at the end of the movement , for too small delay
+\end_layout
+
+\begin_layout Itemize
+Unable to reproduce undershoot for too high delay, according to simulink
+\end_layout
+
+\begin_layout Itemize
+Unable to reproduce simulink for type-2 controller
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+How we continue next time:
+\end_layout
+
+\begin_layout Itemize
+n/a
+\end_layout
+
+\begin_layout Paragraph
+What we need to ask the instructor:
+\end_layout
+
+\begin_layout Itemize
+n/a
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Consult Meeting
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Date: 06.09.2020
+\end_layout
+
+\begin_layout Paragraph
+Participants:
+\end_layout
+
+\begin_layout Standard
+Amir, Idan, Ilan
+\end_layout
+
+\begin_layout Paragraph
+Disscussion Topics:
+\end_layout
+
+\begin_layout Itemize
+Live demonstration of the system performance
+\end_layout
+
+\begin_layout Itemize
+Discuss tracking problems and difference from simulation
+\end_layout
+
+\begin_layout Paragraph
+Conclusions:
+\end_layout
+
+\begin_layout Itemize
+We have solved the zero diff problem
+\end_layout
+
+\begin_layout Paragraph
+Actions:
+\end_layout
+
+\begin_layout Itemize
+Solve the other problem
+\end_layout
+
+\end_body
+\end_document

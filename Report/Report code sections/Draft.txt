@@ -1,0 +1,8 @@
+import cv2
+import numpy as np
+import imageio
+
+cap = cv2.VideoCapture('vid3.mp4')
+frameCount = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+frameWidth = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+frameHeight = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
