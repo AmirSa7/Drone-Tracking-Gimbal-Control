@@ -6,6 +6,7 @@ Implementing a good target following system may be useful for various applicatio
 1.	recording fast moving object like birds, bats or insects.
 2.	Shooting down military invasive targets
 3.	Maintaining beam-based communication with a moving system.
+
 Doing it well enough using relatively cheap, off-the-shelf parts is challenging. In this project we are using a drone as the moving target.
 In our work we have simulated this discrete, opened loop system, paying attention to the added detection noise as well as hardware and software delays.
 To achieve good performance, we have used Kalman Filter, PID Controller and a Predictor.  We have simulated (Simulink) various configurations of these elements and fined tuned the constants. Then we implemented a PID controller in code (Python, Jetson) and 2 axes simultaneous speed controller to drive the motors (C++, Arduino). Finally, we have performed real-life experiments and measurements to confirm the theory and the simulation.
