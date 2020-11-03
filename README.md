@@ -18,6 +18,6 @@ To achieve good performance, we have used Kalman Filter, PID Controller and a Pr
 The DNN being used in this project is YOLOv5 from: https://github.com/ultralytics/yolov5 were detect.py was modified in order to fit our needs.
 In order to control the drone autonomously we have used this repo: https://github.com/dji-sdk/Tello-Python .
 
-Video
+## Video
 A link to an overview video:
 https://www.youtube.com/watch?v=vYopR_5U33Y&feature=youtu.be
