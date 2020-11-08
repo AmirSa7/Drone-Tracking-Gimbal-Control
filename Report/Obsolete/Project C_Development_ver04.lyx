@@ -198,7 +198,8 @@ Supervisor:
 \align center
 
 \size largest
-Ilan Rusnak
+Dr.
+ Ilan Rusnak
 \end_layout
 
 \begin_layout Standard
@@ -720,7 +721,7 @@ Gimbal
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Pan & Tilt Unit
 \end_layout
 
 \end_inset
@@ -2394,15 +2395,16 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="5">
+<lyxtabular version="3" rows="3" columns="6">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2411,7 +2413,7 @@ MS config.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2424,7 +2426,7 @@ Input Voltage
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2439,7 +2441,7 @@ Max.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2452,12 +2454,79 @@ Calculated
 
 \end_inset
 </cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1-Pulse size
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[deg/pulse\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-1-Pulse size 
-\begin_inset Formula $\left[deg/pulse\right]$
+\begin_inset Formula $\left[mRad/pulse\right]$
 \end_inset
 
 
@@ -2489,7 +2558,7 @@ LLL
 \begin_inset Text
 
 \begin_layout Plain Layout
--
+870
 \end_layout
 
 \end_inset
@@ -2498,7 +2567,19 @@ LLL
 \begin_inset Text
 
 \begin_layout Plain Layout
--
+45
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2\cdot1.8°$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2507,7 +2588,10 @@ LLL
 \begin_inset Text
 
 \begin_layout Plain Layout
--
+\begin_inset Formula $62.8$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2550,15 +2634,16 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="5">
+<lyxtabular version="3" rows="3" columns="6">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2567,7 +2652,7 @@ MS config.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2580,7 +2665,7 @@ Input Voltage
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2595,7 +2680,7 @@ Max.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2608,12 +2693,79 @@ Calculated
 
 \end_inset
 </cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1-Pulse size
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[deg/pulse\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-1-Pulse size 
-\begin_inset Formula $\left[deg/pulse\right]$
+\begin_inset Formula $\left[mRad/pulse\right]$
 \end_inset
 
 
@@ -2659,11 +2811,23 @@ LHL
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 \begin_inset Formula $\frac{1.8°}{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $15.7$
 \end_inset
 
 
@@ -2677,6 +2841,9 @@ LHL
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -2930,7 +3097,10 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-<Fix>
+A scetch describing our nominal calibration.
+ The distance is 5 meters and the zoom amout is set to capture 51 centimeters
+ from left to right.
+ 1280 is the count of pixels in the horizintal axis.
 \end_layout
 
 \end_inset
@@ -2947,25 +3117,25 @@ status open
 From this sketch we derive the field of view (FOV) of our camera, and the
  conversion factor between pixels and degrees.
 \begin_inset Formula 
-\[
-\boxed{\text{Camera FOV}=\tan^{-1}\left(\frac{0.51}{2\cdot5}\right)\cdot2=5.82°}
-\]
+\begin{equation}
+\boxed{\text{Camera FOV}=\tan^{-1}\left(\frac{0.51}{2\cdot5}\right)\cdot2=5.82\left[deg\right]=101.5\left[mRad\right]}
+\end{equation}
 
 \end_inset
 
 
 \begin_inset Formula 
-\[
-\boxed{\text{\ensuremath{\alpha_{0}}}=\frac{5.82}{1280}=0.0045\left[deg/pixel\right]}
-\]
+\begin{equation}
+\boxed{\text{\ensuremath{\alpha_{0}}}=\frac{5.82}{1280}=0.0045\left[deg/pixel\right]=0.078\left[mRad/pixel\right]}
+\end{equation}
 
 \end_inset
 
 
 \begin_inset Formula 
-\[
+\begin{equation}
 \boxed{\text{\ensuremath{\beta_{0}}}=\frac{1280}{0.51}=2510\left[pixel/m\right]}
-\]
+\end{equation}
 
 \end_inset
 
@@ -2978,11 +3148,11 @@ Maximum Target Velocity
 
 \begin_layout Standard
 By accelerating the drone to its maximum velocity, and converting it to
- angular velocity, we found that: <FIX>
+ angular velocity, we found that: 
 \begin_inset Formula 
-\[
-\boxed{\text{Maximum Target Angular Velocity}=v_{\theta}=\left[deg\cdot s^{-1}\right]}
-\]
+\begin{equation}
+\boxed{\text{Maximum Target Angular Velocity}=v_{\theta}=17\left[deg\cdot s^{-1}\right]=296.7\left[mRad\cdot s^{-1}\right]}
+\end{equation}
 
 \end_inset
 
@@ -2997,9 +3167,9 @@ Maximum Target Acceleration
 After performing a simple experiment, we can bound the drone's acceleration
  by:
 \begin_inset Formula 
-\[
+\begin{equation}
 \boxed{\text{X axis Acceleration}=a_{x}<2\left[m\cdot s^{-2}\right]}
-\]
+\end{equation}
 
 \end_inset
 
@@ -3013,9 +3183,9 @@ So calculating the angular acceleration, with the assumption
 
  yields:
 \begin_inset Formula 
-\[
-\boxed{\text{\ensuremath{\theta} Angular Acceleration}=a_{\theta}<22.91\left[deg\cdot s^{-2}\right]}
-\]
+\begin{equation}
+\boxed{\text{\ensuremath{\theta} Angular Acceleration}=a_{\theta}<22.91\left[deg\cdot s^{-2}\right]=399.6\left[mRad\cdot s^{-2}\right]}
+\end{equation}
 
 \end_inset
 
@@ -3023,7 +3193,7 @@ So calculating the angular acceleration, with the assumption
 \end_layout
 
 \begin_layout Subsection
-Detection Noise Parameters
+Measuring Noise Parameters
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Detection-Noise-Parameters"
@@ -3099,17 +3269,17 @@ Measuring the detection noise value of the DNN.
 \begin_layout Standard
 This test produced the following results:
 \begin_inset Formula 
-\[
+\begin{equation}
 \boxed{\text{Detection Mean}=w_{d,0}=0\left[pixels\right]}
-\]
+\end{equation}
 
 \end_inset
 
 
 \begin_inset Formula 
-\[
+\begin{equation}
 \boxed{\text{Detection Covariance}=\sigma_{d,0}=12\left[pixels\right]}
-\]
+\end{equation}
 
 \end_inset
 
@@ -3122,17 +3292,17 @@ and after converting it to degrees:
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-\boxed{\text{Detection Mean}=w_{d,0}\cdot\text{\ensuremath{\alpha_{0}}}=0\left[deg\right]}
-\]
+\begin{equation}
+\boxed{\text{Detection Mean}=w_{d,0}\cdot\text{\ensuremath{\alpha_{0}}}=0\left[deg\right]=0\left[mRad\right]}
+\end{equation}
 
 \end_inset
 
 
 \begin_inset Formula 
-\[
-\boxed{\text{Detection Covariance}=\sigma_{d,0}\cdot\text{\ensuremath{\alpha_{0}}}=0.054\left[deg\right]}
-\]
+\begin{equation}
+\boxed{\text{Detection Covariance}=\sigma_{d,0}\cdot\text{\ensuremath{\alpha_{0}}}=0.054\left[deg\right]=0.94\left[mRad\right]}
+\end{equation}
 
 \end_inset
 
@@ -3162,8 +3332,8 @@ noprefix "false"
 \end_inset
 
  this delay has a major influence on our system.
- Unfortunately our camera is no professional enough thus not include this
- parameter in it's specification.
+ Unfortunately our camera is no professional enough thus does not include
+ this parameter in it's specification.
  In order to estimate it's value, we have built the next set-up:
 \end_layout
 
@@ -3330,7 +3500,7 @@ The setup works according to this logic: we make the camera capture a live
  Assuming the program we use to show the camera stream adds a negligible
  delay, or at least the best possible one, we now have the same timer twice
  on the monitor.
- One is the original timer (the pretty one on the figure) and the second
+ One is the original timer (the pretty one on Figure 22) and the second
  is the timer after it went though the camera, thus it is delayed (the yellowish
  one on the figure).
 \end_layout
@@ -3376,19 +3546,19 @@ Modeling Our System
 \begin_layout Standard
 Define our state space:
 \begin_inset Formula 
-\[
+\begin{equation}
 x_{k}\triangleq\left(\begin{array}{c}
 \theta_{t}\\
 \dot{\theta}_{t}\\
 \ddot{\theta}_{t}
 \end{array}\right)_{k}
-\]
+\end{equation}
 
 \end_inset
 
 Defining the matrices:
 \begin_inset Formula 
-\[
+\begin{equation}
 A=\left(\begin{array}{ccc}
 1 & \Delta_{k} & \frac{\Delta_{k}^{2}}{2}\\
 0 & 1 & \Delta_{k}\\
@@ -3399,13 +3569,13 @@ A=\left(\begin{array}{ccc}
 0
 \end{array}\right),\qquad C=\left(\begin{array}{ccc}
 1 & 0 & 0\end{array}\right)
-\]
+\end{equation}
 
 \end_inset
 
 The system:
 \begin_inset Formula 
-\[
+\begin{equation}
 \begin{cases}
 x_{k+1}=Ax_{k}+\left(\begin{array}{c}
 0\\
@@ -3414,7 +3584,7 @@ x_{k+1}=Ax_{k}+\left(\begin{array}{c}
 \end{array}\right)w\\
 y_{k}=Cx_{k}+v
 \end{cases}
-\]
+\end{equation}
 
 \end_inset
 
@@ -3430,11 +3600,7 @@ on.
 
  is the measurement noise.
  We assume both noises are random, independent with known measured covariance
- and an average of 
-\begin_inset Formula $0$
-\end_inset
-
- .
+ and an average of zero.
 \end_layout
 
 \begin_layout Standard
@@ -3453,7 +3619,7 @@ Mathematically
 \begin_layout Standard
 Define the noise covariance matrices:
 \begin_inset Formula 
-\[
+\begin{equation}
 \begin{cases}
 W= & \left(\begin{array}{ccc}
 0 & 0 & 0\\
@@ -3462,36 +3628,36 @@ W= & \left(\begin{array}{ccc}
 \end{array}\right)cov\left(w\right)\\
 V= & cov\left(v\right)
 \end{cases}
-\]
+\end{equation}
 
 \end_inset
 
 Prediction:
 \begin_inset Formula 
-\[
+\begin{equation}
 \begin{cases}
 P_{k+1}^{-}=A_{k}P_{k}^{+}A_{k}^{T}+W\\
 \hat{x}_{k+1}^{-}=A_{k}\hat{x}^{+}
 \end{cases}
-\]
+\end{equation}
 
 \end_inset
 
 Estimation:
 \begin_inset Formula 
-\[
+\begin{equation}
 \begin{cases}
 K_{k}\triangleq P_{k}^{-}C_{k}^{T}\left(C_{k}P_{k}^{-}C_{k}^{T}+V\right)^{-1}\\
 \hat{x}_{k}^{+}=x_{k}^{-}+K_{k}\left(y_{k}-C_{k}x_{k}^{-}\right)\\
 P_{k}^{+}=\left(I-K_{k}C_{k}\right)P_{k}^{-}
 \end{cases}
-\]
+\end{equation}
 
 \end_inset
 
 Initial state:
 \begin_inset Formula 
-\[
+\begin{equation}
 x_{0}=\left(\begin{array}{c}
 y_{0}\\
 0\\
@@ -3501,7 +3667,7 @@ y_{0}\\
 0 & 1 & 0\\
 0 & 0 & 1
 \end{array}\right)
-\]
+\end{equation}
 
 \end_inset
 
@@ -3819,7 +3985,17 @@ noprefix "false"
 
 \end_inset
 
-, and will be proven in <FIX> our system suffers badly from this delay.
+, and will be proven in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:The-influence-of-delay"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ our system suffers badly from this delay.
  Our system always 
 \begin_inset Quotes eld
 \end_inset
@@ -4204,13 +4380,13 @@ In order to compare between different control methods and to fine tune hyper-par
 ameters, A consistent performance test is required.
  As it is customary we will use MSE as the cost function:
 \begin_inset Formula 
-\begin{align*}
-\text{Momentary Error} & =\text{SE}\\
- & =\left(\text{Distance Diff}\right)^{2}\\
- & =\left(\sqrt{\left(x_{target}-x_{center}\right)^{2}+\left(y_{target}-y_{center}\right)^{2}}\right)^{2}\\
- & =\left(x_{target}-x_{center}\right)^{2}+\left(y_{target}-y_{center}\right)^{2}\\
+\begin{align}
+\text{Momentary Error} & =\text{SE}\nonumber \\
+ & =\left(\text{Distance Diff}\right)^{2}\nonumber \\
+ & =\left(\sqrt{\left(x_{target}-x_{center}\right)^{2}+\left(y_{target}-y_{center}\right)^{2}}\right)^{2}\nonumber \\
+ & =\left(x_{target}-x_{center}\right)^{2}+\left(y_{target}-y_{center}\right)^{2}\nonumber \\
  & =\left(x_{target}\right)^{2}+\left(y_{target}\right)^{2}
-\end{align*}
+\end{align}
 
 \end_inset
 
@@ -4220,11 +4396,11 @@ ameters, A consistent performance test is required.
 \begin_layout Standard
 Hence the total error of the test will be:
 \begin_inset Formula 
-\begin{align*}
-\text{Total Error} & =\text{MSE}\\
- & =\frac{1}{K}\sum_{k=1}^{K}\left(\text{Momentary Error}\right)\\
+\begin{align}
+\text{Total Error} & =\text{MSE}\nonumber \\
+ & =\frac{1}{K}\sum_{k=1}^{K}\left(\text{Momentary Error}\right)\nonumber \\
  & =\frac{1}{K}\sum_{k=1}^{K}\left(x_{target_{k}}^{2}+y_{target_{k}}^{2}\right)
-\end{align*}
+\end{align}
 
 \end_inset
 
@@ -4765,6 +4941,13 @@ We can see that the offset graph is almost identical to the ideal offset
 
 \begin_layout Subsubsection
 The influence of delay 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:The-influence-of-delay"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5958,8 +6141,7 @@ Pre-programmed drone route example
 \end_layout
 
 \begin_layout Standard
-In fact such a program was implemented in Project 5095 by Shaked Osherov
- at VISL Laboratory which is an upgrade for this (
+In fact such a program was implemented in this (
 \begin_inset CommandInset href
 LatexCommand href
 name "link"
@@ -5997,7 +6179,7 @@ Real life experiments may differ due to the light amount or wind in the
 \end_layout
 
 \begin_layout Subsubsection
-Real life graphs
+Real life experiments
 \end_layout
 
 \begin_layout Standard
@@ -6706,6 +6888,76 @@ jerks,
 \series default
  prediction becomes inaccurate and the tracking quality drops and we can
  even lose the target.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Refferences
+\end_layout
+
+\begin_layout Enumerate
+P.J.
+ Kennedy, R.L.
+ Kennedy (2012).
+ Direct Versus Indirect Line of Sight (LOS) Stabilization.
+ (
+\begin_inset CommandInset href
+LatexCommand href
+name "link"
+target "https://ieeexplore.ieee.org/abstract/document/1173005"
+literal "false"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+Gene F.
+ Franklin, J.
+ Davis Powell (2019).
+ Feedback Control of Dynamic Systems, 8th Edition.
+ (
+\begin_inset CommandInset href
+LatexCommand href
+name "link"
+target "https://www.pearson.com/us/higher-education/program/Franklin-Feedback-Control-of-Dynamic-Systems-8th-Edition/PGM1653583.html"
+literal "false"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+Technion Institute of Technology (2019).
+ Control Systems 2
+\begin_inset Quotes erd
+\end_inset
+
+ tutorials pages, Course No.
+ 044192.
+\end_layout
+
+\begin_layout Enumerate
+P.
+ Calvi, E.Y Chen, dji-sdk / Tello-Python (2019).
+ GitHub Repository (
+\begin_inset CommandInset href
+LatexCommand href
+name "link"
+target "https://github.com/dji-sdk/Tello-Python"
+literal "false"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Standard
